@@ -1,7 +1,7 @@
 # SE IMPORTA TODOS LOS MODULOS NECESARIOS
 import sqlite3            
 import datetime
-import tkinter
+from tkinter import *
 from PIL import ImageTk,Image
 from tkinter import messagebox
 import ast
