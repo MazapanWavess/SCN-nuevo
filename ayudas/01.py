@@ -48,5 +48,3 @@ bttn(0,74,"D E L L","#f86263","#141414",cmd2)
 bttn(0,110,"A S U S","#ffa157","#141414",cmd3)
 
 w.mainloop() 
-
-df
