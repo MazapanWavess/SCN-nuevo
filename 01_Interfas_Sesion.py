@@ -104,7 +104,7 @@ boton_Iniciar.bind("<Leave>", salir)
 
 l1=tkinter.Label(f1,text="No tienes cuenta?",fg="#222831",bg='white')
 l1.config(font=('Microsoft YaHei UI Light',9, ))
-l1.place(x=95,y=250)
+l1.place(x=95,y=250) 
 
 b2=tkinter.Button(f1,width=8,text='Registrate',border=0,bg='white',fg='#00ADB5')
 b2.place(x=200,y=250)
