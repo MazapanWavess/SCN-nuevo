@@ -1,7 +1,7 @@
 # IMPORTAMOS LIBRERIAS (FALTA LA LIBRERIA SQLITE)
 import tkinter
-import sqlite3 
-from PIL import Image, ImageTk
+#import sqlite3 
+#from PIL import Image, ImageTk
 
 
 #--------------------------------------------------------
@@ -9,12 +9,12 @@ from PIL import Image, ImageTk
 
 # FUNCIONES PARA BOTON INICIA SESION
 def entrar(e):
-    boton_Iniciar["background"] = "#2d3541"
-    boton_Iniciar["foreground"] = "#00ADB5"
+    eti3["background"] = "#2d3541"
+    eti3["foreground"] = "#00ADB5"
 
 def salir(e):
-    boton_Iniciar["background"] = "#00ADB5"
-    boton_Iniciar["foreground"] = "#2d3541"
+    eti3["background"] = "#00ADB5"
+    eti3["foreground"] = "#2d3541"
 
 # FUNCIONES PARA LAS CAJAS DE TEXTO
 def on_enter_usuario(e):
@@ -33,8 +33,140 @@ def on_leave_contraseña(e):
     if contraseña.get() == '':
         contraseña.insert(0, 'Contraseña')
 
+# Nueva ventana
+#--------------------------------------------------------
 
 #--------------------------------------------------------
+
+def otra_ventana():
+    z=tkinter.Toplevel()
+    z.geometry("925x500")
+    z.title("Ventana secundaria")
+    z.config(bg='#222831')
+
+    def ventana_Agregar():
+        t=tkinter.Toplevel()
+        t.geometry("925x500")
+        t.title("Ventana secundaria")
+        t.config(bg='#222831')
+
+    boton33=tkinter.Button(z,width=10, pady=7,text="Cerrar sesion",
+                                bg="#00ADB5",
+                                fg="#2d3541",
+                                border=0,
+                                activeforeground="#00ADB5",
+                                activebackground="#2d3541",
+                                command=z.destroy)
+    boton33.place(x=10,y=10)
+
+    nombre = usuario.get()
+    nombre.upper()
+    eti1=tkinter.Label(z,text="BIENVENIDO "+ nombre,
+                        fg='#00ADB5', 
+                        bg='#222831',
+                        font=('Microsoft YaHei UI Light', 24, 'bold'))
+    eti1.pack(padx=10,pady=10)
+
+    eti2=tkinter.Label(z,text="MENÚ",
+                        fg='#00ADB5', 
+                        bg='#222831',
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti2.pack(fill="x",padx=10,pady=10)
+
+
+# 1
+    eti3=tkinter.Button(z,text="¿Como usar SCN?",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=15,
+                        pady= 7,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 7, 'bold'),
+                        command=ventana_Agregar)
+    eti3.place(x=800,y=10)
+
+# 2
+    eti3=tkinter.Button(z,text="AGREGAR PRODUCTO",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=100,y=160)
+
+# 3
+    eti3=tkinter.Button(z,text="LISTA DE PRODUCTOS",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=100,y=260)
+
+# 4
+    eti3=tkinter.Button(z,text="BUSCAR PRODUCTO",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=100,y=360)
+
+#5
+    eti3=tkinter.Button(z,text="REGISTRAR VENTA",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=520,y=160)
+
+#6
+    eti3=tkinter.Button(z,text="VENTAS DEL DIA",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=520,y=260)
+
+#7
+    eti3=tkinter.Button(z,text="VENTAS ANTERIORES",
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 15, 'bold'))
+    eti3.place(x=520,y=360)
+
+
+    eti3=tkinter.Button(z,text="SALIR",command=z.quit,
+                        bg="#00ADB5",
+                        fg="#2d3541",
+                        width=25,
+                        border=0,
+                        activeforeground="#00ADB5",
+                        activebackground="#2d3541",
+                        font=('Microsoft YaHei UI Light', 10, 'bold'))
+    eti3.place(x=345,y=450)
+
+#--------------------------------------------------------
+
+
 # CREAMOS LA VENTANA VENTANA
 ventana = tkinter.Tk()
 ventana.geometry("925x500")
@@ -48,14 +180,8 @@ ventana.config(bg='#222831')
 #--------------------------------------------------------
 # Aquí se debe poner la imagen
 
-signin_win=tkinter.Frame(ventana,width=925,height=500,bg='#222831')
-signin_win.place(x=0,y=0)
-f1=tkinter.Frame(signin_win,width=350,height=350,bg='#222831')
-f1.place(x=480,y=100)
-
-global img1
-img1 = ImageTk.PhotoImage(Image.open("F:\\04_Proyecto\\scn nuevo\\SCN-nuevo\\01.png"))
-tkinter.Label(signin_win,image=img1,border=0,bg='#222831').place(x=50,y=50)
+img1 = tkinter.PhotoImage(file=(r"F:\04_Proyecto\scn nuevo\SCN-nuevo\01.png"))
+tkinter.Label(ventana,image=img1,border=0,bg='#222831').place(x=50,y=50)
 
 
 #--------------------------------------------------------
@@ -78,6 +204,7 @@ usuario.config(font=('Microsoft YaHei UI Light', 11, ))
 usuario.bind("<FocusIn>", on_enter_usuario)
 usuario.bind("<FocusOut>", on_leave_usuario)
 usuario.insert(0, 'Usuario')
+usuario.get()
 usuario.place(x=30, y=60)
 
 # frame de la parte inferior de la caja de texto 1
@@ -99,16 +226,17 @@ tkinter.Frame(f1, width=295, height=2, bg='white').place(x=25, y=157)
 #--------------------------------------------------------
 # CREAMOS EL BOTON PARA EL INICIO DE SESION
 
-boton_Iniciar = tkinter.Button(f1, width=39, pady=7, text='Inicia sesión',
+eti3 = tkinter.Button(f1, width=39, pady=7, text='Inicia sesión',
                                 bg="#00ADB5",
                                 fg="#2d3541",
                                 border=0,
                                 activeforeground="#00ADB5",
-                                activebackground="#2d3541")
+                                activebackground="#2d3541",
+                                command=otra_ventana)
 
-boton_Iniciar.place(x=35, y=204)
-boton_Iniciar.bind("<Enter>", entrar)
-boton_Iniciar.bind("<Leave>", salir)
+eti3.place(x=35, y=204)
+eti3.bind("<Enter>", entrar)
+eti3.bind("<Leave>", salir)
 
 #--------------------------------------------------------
 # REGISTRARSE
