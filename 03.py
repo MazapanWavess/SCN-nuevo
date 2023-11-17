@@ -12,7 +12,8 @@ def entrar(e):
     eti3["background"] = "#2d3541"
     eti3["foreground"] = "#00ADB5"
 
-def salir(e):   
+
+def salir(e):
     eti3["background"] = "#00ADB5"
     eti3["foreground"] = "#2d3541"
 
@@ -38,23 +39,17 @@ def on_leave_contraseña(e):
 
 #--------------------------------------------------------
 
-productos = []
-
 def otra_ventana():
     z=tkinter.Toplevel()
     z.geometry("925x500")
     z.title("Ventana secundaria")
     z.config(bg='#222831')
 
-    def como_usar():
-        x=tkinter.Toplevel()
-        x.geometry("925x500")
-        x.title("Ventana secundaria")
-        x.config(bg='#222831')
-
-
-
-#--------------------------------------------------------
+    def ventana_Agregar():
+        signup_win=tkinter.Frame(z,width=925,height=500,bg='white')
+        signup_win.place(x=0,y=0)
+        f1=tkinter.Frame(signup_win,width=350,height=350,bg='white')
+        f1.place(x=480,y=70)
 
     boton33=tkinter.Button(z,width=10, pady=7,text="Cerrar sesion",
                                 bg="#00ADB5",
@@ -90,7 +85,7 @@ def otra_ventana():
                         activeforeground="#00ADB5",
                         activebackground="#2d3541",
                         font=('Microsoft YaHei UI Light', 7, 'bold'),
-                        command=como_usar)
+                        command=ventana_Agregar)
     eti3.place(x=800,y=10)
 
 # 2
@@ -178,7 +173,6 @@ ventana = tkinter.Tk()
 ventana.geometry("925x500")
 ventana.title("SCN")
 ventana.config(bg='#222831')
-ventana.iconbitmap(r"F:\04_Proyecto\scn nuevo\SCN-nuevo\Agregar un título (1).ico")
 
 #--------------------------------------------------------
 # AQUI SE PONDRA LA TABLAS PARA LA BASE DE DATOS
