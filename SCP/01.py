@@ -1,71 +1,102 @@
 from tkinter import *
+from PIL import ImageTk, Image
 
-class CajasDeTexto:
-    def __init__(self, ubicacion, ancho, color1, color2, nombre, x, y):
-        self.ubicacion = ubicacion
-        self.ancho = ancho
-        self.color1 = color1
-        self.color2 = color2
-        self.nombre = nombre
-        self.x = x
-        self.y = y
+class ToggleMenuApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry('900x500')
+        self.master.configure(bg='#262626')  # 12c4c0')
+        self.master.resizable(0, 0)
+        self.master.title('Toggle Menu')
 
-    def Caja(self):
-        def on_enter(e):
-            etiqueta.delete(0, 'end')
+        self.img1 = ImageTk.PhotoImage(Image.open(r"F:\03_Codigos_Prueba\02 ventanas pruebas\imagenes\open.png"))
+        self.img2 = ImageTk.PhotoImage(Image.open(r"F:\03_Codigos_Prueba\02 ventanas pruebas\imagenes\close.png"))
 
-        def on_leave(e):
-            if etiqueta.get() == '':
-                etiqueta.insert(0, 'Usuario')
+        self.b2 = Button(self.master, image=self.img1, command=self.toggle_win, border=0, bg='#262626',
+                            activebackground='#262626')
+        self.b2.place(x=5, y=8)
 
-        etiqueta = StringVar()
-        etiqueta = Entry(self.ubicacion,
-                        width=self.ancho,
-                        fg=self.color1,
-                        border=0,
-                        bg=self.color2,
-                        )
-        etiqueta.config(font=('Microsoft YaHei UI Light', 11,))
-        etiqueta.bind("<FocusIn>", on_enter)
-        etiqueta.bind("<FocusOut>", on_leave)
-        etiqueta.insert(0, self.nombre)
-        etiqueta.place(x=self.x, y=self.y)
+        self.default_home()
+
+        self.master.mainloop()
+
+    def default_home(self):
+        f2 = Frame(self.master, width=900, height=455, bg='#262626')
+        f2.place(x=0, y=45)
+        l2 = Label(f2, text='Home', fg='white', bg='#262626')
+        l2.config(font=('Comic Sans MS', 90))
+        l2.place(x=290, y=150 - 45)
+
+    def home(self):
+        self.f1.destroy()
+        f2 = Frame(self.master, width=900, height=455, bg='#262626')
+        f2.place(x=0, y=45)
+        l2 = Label(f2, text='Home', fg='white', bg='#262626')
+        l2.config(font=('Comic Sans MS', 90))
+        l2.place(x=290, y=150 - 45)
+        self.toggle_win()
+
+    def acer(self):
+        self.f1.destroy()
+        f2 = Frame(self.master, width=900, height=455, bg='white')
+        f2.place(x=0, y=45)
+        l2 = Label(f2, text='Acer', fg='black', bg='white')
+        l2.config(font=('Comic Sans MS', 90))
+        l2.place(x=290, y=150 - 45)
+        self.toggle_win()
+
+    def dell(self):
+        self.f1.destroy()
+        f2 = Frame(self.master, width=900, height=455, bg='white')
+        f2.place(x=0, y=45)
+        l2 = Label(f2, text='Dell', fg='black', bg='white')
+        l2.config(font=('Comic Sans MS', 90))
+        l2.place(x=320, y=150 - 45)
+        self.toggle_win()
+
+    def toggle_win(self):
+        self.f1 = Frame(self.master, width=300, height=500, bg='#12c4c0')
+        self.f1.place(x=0, y=0)
+
+        def bttn(x, y, text, bcolor, fcolor, cmd):
+            def on_entera(e):
+                myButton1['background'] = bcolor
+                myButton1['foreground'] = '#262626'
+
+            def on_leavea(e):
+                myButton1['background'] = fcolor
+                myButton1['foreground'] = '#262626'
+
+            myButton1 = Button(self.f1, text=text,
+                               width=42,
+                               height=2,
+                               fg='#262626',
+                               border=0,
+                               bg=fcolor,
+                               activeforeground='#262626',
+                               activebackground=bcolor,
+                               command=cmd)
+
+            myButton1.bind("<Enter>", on_entera)
+            myButton1.bind("<Leave>", on_leavea)
+
+            myButton1.place(x=x, y=y)
+
+        bttn(0, 80, 'H O M E', '#0f9d9a', '#12c4c0', self.home)
+        bttn(0, 117, 'A C E R', '#0f9d9a', '#12c4c0', self.acer)
+        bttn(0, 154, 'D E L L', '#0f9d9a', '#12c4c0', self.dell)
+        bttn(0, 191, 'A S U S', '#0f9d9a', '#12c4c0', None)
+        bttn(0, 228, 'A P P L E', '#0f9d9a', '#12c4c0', None)
+        bttn(0, 265, 'A C E R', '#0f9d9a', '#12c4c0', None)
+
+        def dele():
+            self.f1.destroy()
+            b2 = Button(self.master, image=self.img1, command=self.toggle_win, border=0, bg='#262626',
+                        activebackground='#262626')
+            b2.place(x=5, y=8)
+
+        Button(self.f1, image=self.img2, border=0, command=dele, bg='#12c4c0', activebackground='#12c4c0').place(x=5, y=10)
 
 
-class InicioSesion:
-    def __init__(self, principal):
-
-        self.principal = principal
-        self.inicio_sesion = Frame(scn, width=925,
-                                    height=500,
-                                    bg='#222831')
-        self.inicio_sesion.place(x=0, y=0)
-
-        # Etiqueta "Inicia Sesion"
-        self.Eti_Inicia_Sesion = Label(scn, text="Inicia sesión", fg='#00ADB5', bg='#222831')
-        self.Eti_Inicia_Sesion.config(font=('Microsoft YaHei UI Light', 24, 'bold'))
-        self.Eti_Inicia_Sesion.place(x=570, y=60)
-
-        # Frame para las cajas de texto
-        self.Cajas_Texto = Frame(self.inicio_sesion, width=350, height=350, bg='#222831')
-        self.Cajas_Texto.place(x=480, y=100)
-
-        # Caja 1
-        self.Usuario = CajasDeTexto(self.Cajas_Texto,
-                                        21,
-                                        "#00ADB5",
-                                        "white",
-                                        "Usuario",
-                                        30,
-                                        130)
-        self.Usuario.Caja()  # Llama al método Caja para crear la caja de texto
-
-
-scn = Tk()
-scn.geometry("925x500")
-scn.title("Software de Control de Negocios (SCN)")
-scn.config(bg='white')
-
-inicio_sesion_obj = InicioSesion(scn)
-
-scn.mainloop()
+if __name__ == "__main__":
+    app = ToggleMenuApp(Tk())
